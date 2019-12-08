@@ -8,7 +8,7 @@ const Nav: React.FC = () => {
       <Link to="/">
         <li>Home</li>
       </Link>
-      <Link to="/post">
+      <Link to="/posts">
         <li>Post</li>
       </Link>
     </ul>

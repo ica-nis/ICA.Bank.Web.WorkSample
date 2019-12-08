@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "./components/Nav";
-import Post from "./components/Post";
+import PostList from "./components/PostList";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App: React.FC = () => {
@@ -9,7 +9,7 @@ const App: React.FC = () => {
       <Nav />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/post" exact component={Post} />
+        <Route path="/posts" exact component={PostList} />
       </Switch>
     </Router>
   );
