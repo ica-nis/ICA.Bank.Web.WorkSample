@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 interface PostListProps {}
 
@@ -8,7 +9,7 @@ interface PostListState {
   text: string;
 }
 
-const PostList = () => {
+const PostList: React.FC = () => {
   useEffect(() => {
     fetchItems();
   }, []);
@@ -29,7 +30,9 @@ const PostList = () => {
     <>
       {items.map(item => (
         <div key={item.id}>
-          <h1>{item.heading}</h1>
+          <h1>
+            <Link to={`/posts/${item.id}`}>{item.heading}</Link>
+          </h1>
           <p>{item.text}</p>
         </div>
       ))}
@@ -38,45 +41,3 @@ const PostList = () => {
 };
 
 export default PostList;
-
-////////////////////////
-// CLASS COMPONENT
-////////////////////////
-// import React, { Component } from "react";
-
-// interface State {
-//   items: any;
-// }
-
-// class PostList extends Component<{}, State> {
-//   state = {
-//     items: [{ name: "hej" }]
-//   };
-
-//   async fetchData() {
-//     try {
-//       await fetch("http://localhost:3001/api/posts")
-//         .then(response => response.json())
-//         .then(responseData => {
-//           console.log(responseData);
-//           this.setState({
-//             items: responseData.results
-//           });
-//         });
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
-//   render() {
-//     const { items } = this.state;
-//     return (
-//       <>
-//         {items.map((item, index) => (
-//           <h1 key={index}>{item.name}</h1>
-//         ))}
-//       </>
-//     );
-//   }
-// }
-
-// export default PostList;
