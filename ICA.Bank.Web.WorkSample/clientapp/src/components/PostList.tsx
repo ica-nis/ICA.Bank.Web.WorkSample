@@ -1,32 +1,37 @@
 import React, { useState, useEffect } from "react";
 
-const PostList: React.FC = () => {
+interface PostListProps {}
+
+interface PostListState {
+  id: number;
+  heading: string;
+  text: string;
+}
+
+const PostList = () => {
   useEffect(() => {
     fetchItems();
   }, []);
 
-  const [items, setItems] = useState([
-    // {
-    //   name: "test"
-    // }
-  ]);
+  const [items, setItems] = useState<PostListState[]>([]);
 
   const fetchItems = async () => {
     try {
       const data = await fetch("http://localhost:3001/api/posts");
       const items = await data.json();
-      console.log("HELLO FROM INSIDE OF FETCHITEMS", items);
       setItems(items);
     } catch (error) {
       console.error(error);
     }
   };
-  console.log("STATE", items);
 
   return (
     <>
-      {items.map((item, index) => (
-        <h1 key={index}>{item}</h1>
+      {items.map(item => (
+        <div key={item.id}>
+          <h1>{item.heading}</h1>
+          <p>{item.text}</p>
+        </div>
       ))}
     </>
   );
