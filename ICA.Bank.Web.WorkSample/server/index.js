@@ -19,10 +19,6 @@ const posts = [
   }
 ];
 
-// app.get("/", (req, res) => {
-//   res.send("Hello world");
-// });
-
 app.get("/api/posts", (req, res) => {
   res.send(posts);
 });
@@ -37,6 +33,7 @@ app.post("/api/posts", (req, res) => {
   const result = schema.validate(req.body);
 
   if (result.error) {
+    console.log("Error");
     res.status(400).send(result.error.details[0].message);
     return;
   }
