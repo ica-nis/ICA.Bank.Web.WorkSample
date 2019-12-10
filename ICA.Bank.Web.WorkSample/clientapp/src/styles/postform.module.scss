@@ -1,0 +1,14 @@
+.postForm {
+  margin: 50px 0;
+  width: 500px;
+  display: grid;
+
+  input {
+    padding: 10px;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .validation {
+    color: red;
+  }
+}

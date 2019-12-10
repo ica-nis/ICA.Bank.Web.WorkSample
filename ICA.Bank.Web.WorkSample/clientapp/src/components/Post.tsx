@@ -7,7 +7,11 @@ interface SinglePostProps {
 interface SinglePostState {
   id?: number;
   heading?: string;
+  subheading?: string;
+  author?: string;
+  email?: string;
   text?: string;
+  timestamp?: number | string;
 }
 
 const Post: React.FC<SinglePostProps> = ({ match }) => {
@@ -24,6 +28,7 @@ const Post: React.FC<SinglePostProps> = ({ match }) => {
       );
       const singlePost = await fetchSinglePost.json();
       setSinglePost(singlePost);
+      console.log(singlePost);
     } catch (error) {
       console.error(error);
     }
@@ -32,7 +37,11 @@ const Post: React.FC<SinglePostProps> = ({ match }) => {
   return (
     <>
       <h1>{singlePost.heading}</h1>
-      <p>{singlePost.text}</p>{" "}
+      <h4>{singlePost.subheading}</h4>
+      <p>{singlePost.text}</p>
+      <p>{singlePost.author}</p>
+      <p>{singlePost.email}</p>
+      <p>{singlePost.timestamp}</p>
     </>
   );
 };

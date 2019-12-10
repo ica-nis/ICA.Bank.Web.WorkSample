@@ -9,13 +9,30 @@ app.use(express.json());
 const posts = [
   {
     id: 1,
-    heading: "post 1",
-    text: "This is a blogpost"
+    heading: "Post 1 header",
+    subheading: "This is the subheading 1",
+    text: "This is the first textfield. Here we can write our blogpost",
+    author: "Erik Wahlström",
+    email: "erik@mail.com",
+    timestamp: 1575967926045
   },
   {
     id: 2,
-    heading: "post 2",
-    text: "This is also blogpost"
+    heading: "Post 2 header",
+    subheading: "This is the subheading 2",
+    author: "Erik Wahlström",
+    email: "erik@mail.com",
+    text: "This is the secound textfield. Here we can write our blogpost",
+    timestamp: 1575967926045
+  },
+  {
+    id: 3,
+    heading: "Post 3 header",
+    subheading: "This is the subheading 3",
+    author: "Erik Wahlström",
+    email: "erik@mail.com",
+    text: "This is the third textfield. Here we can write our blogpost",
+    timestamp: 1575967926045
   }
 ];
 
@@ -24,23 +41,31 @@ app.get("/api/posts", (req, res) => {
 });
 
 app.post("/api/posts", (req, res) => {
-  const schema = Joi.object().keys({
-    heading: Joi.string()
-      .min(3)
-      .max(50)
-      .required()
-  });
-  const result = schema.validate(req.body);
+  // const schema = Joi.object().keys({
+  //   heading: Joi.string()
+  //     .min(3)
+  //     .max(50)
+  //     .required()
+  // });
+  // const result = schema.validate(req.body);
 
-  if (result.error) {
-    console.log("Error");
-    res.status(400).send(result.error.details[0].message);
-    return;
-  }
+  // if (result.error) {
+  //   console.log("Error");
+  //   res.status(400).send(result.error.details[0].message);
+  //   return;
+  // }
+
+  const timestamp = Date.now();
+  req.body.timestamp = timestamp;
+
   const post = {
     id: posts.length + 1,
     heading: req.body.heading,
-    text: req.body.text
+    subheading: req.body.subheading,
+    text: req.body.text,
+    author: req.body.author,
+    email: req.body.email,
+    timestamp: timestamp
   };
   posts.push(post);
   res.send(post);

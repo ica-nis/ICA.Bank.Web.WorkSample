@@ -7,9 +7,10 @@ interface PostListState {
   id: number;
   heading: string;
   text: string;
+  timestamp: number | string;
 }
 
-const PostList: React.FC = () => {
+const PostList: React.FC<PostListProps> = () => {
   useEffect(() => {
     fetchItems();
   }, []);
@@ -20,7 +21,9 @@ const PostList: React.FC = () => {
     try {
       const data = await fetch("http://localhost:3001/api/posts");
       const items = await data.json();
+
       setItems(items);
+      console.log("Right after items been sent to state", items);
     } catch (error) {
       console.error(error);
     }
@@ -33,7 +36,7 @@ const PostList: React.FC = () => {
           <h1>
             <Link to={`/posts/${item.id}`}>{item.heading}</Link>
           </h1>
-          <p>{item.text}</p>
+          <p>{new Date(item.timestamp).toLocaleDateString()}</p>
         </div>
       ))}
     </>
