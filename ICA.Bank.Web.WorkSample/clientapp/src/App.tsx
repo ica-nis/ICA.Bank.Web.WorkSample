@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Nav from "./components/Nav";
+import PostList from "./components/PostList";
+import Post from "./components/Post";
+import PostForm from "./components/PostForm";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Nav />
+      <Switch>
+        <Route path="/" exact component={PostList} />
+        <Route path="/create" exact component={PostForm} />
+        <Route path="/posts" exact component={PostList} />
+        <Route path="/posts/:id" component={Post} />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;

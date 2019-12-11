@@ -1,0 +1,38 @@
+.container {
+  max-width: 50rem;
+  margin: 0 auto 20px auto;
+  padding: 1.5rem 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  word-wrap: break-word;
+  .heading {
+    font-size: 70px;
+    text-align: center;
+  }
+  .subheading {
+    font-family: "Karla", sans-serif;
+  }
+  .text {
+    font-family: "Karla", sans-serif;
+    font-size: 20px;
+    line-height: 1.5em;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .categories {
+    text-align: center;
+    p {
+      color: #abb0ba;
+      display: inline;
+    }
+
+    .secound::before {
+      padding: 0 0.25rem;
+      content: "•";
+    }
+  }
+}
