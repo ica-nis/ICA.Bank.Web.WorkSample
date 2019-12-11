@@ -10,15 +10,13 @@ const App: React.FC = () => {
     <Router>
       <Nav />
       <Switch>
-        <Route path="/" exact component={PostForm} />
+        <Route path="/" exact component={PostList} />
+        <Route path="/create" exact component={PostForm} />
         <Route path="/posts" exact component={PostList} />
         <Route path="/posts/:id" component={Post} />
       </Switch>
     </Router>
   );
 };
-
-// HOME ROUTE
-const Home: React.FC = () => <h1>Home</h1>;
 
 export default App;

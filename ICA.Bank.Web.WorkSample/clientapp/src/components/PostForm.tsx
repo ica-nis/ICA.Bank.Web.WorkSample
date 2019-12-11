@@ -12,6 +12,9 @@ interface PostFormState {
   author: string;
   email: string;
   headingError: string;
+  subheadingError: string;
+  textError: string;
+  authorError: string;
   emailError: string;
 }
 
@@ -22,6 +25,9 @@ const initialState = {
   author: "",
   email: "",
   headingError: "",
+  subheadingError: "",
+  textError: "",
+  authorError: "",
   emailError: ""
 };
 
@@ -36,27 +42,57 @@ class PostForm extends React.Component<PostFormProps, PostFormState> {
       PostFormState,
       keyof PostFormState
     >);
-    console.log(this.state);
+  };
+
+  textAreachangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    this.setState({ [event.target.name]: event.target.value } as Pick<
+      PostFormState,
+      keyof PostFormState
+    >);
   };
 
   validate = () => {
     let headingError = "";
+    let subheadingError = "";
+    let authorError = "";
     let emailError = "";
 
+    // Heading error
     if (this.state.heading.length < 1) {
       headingError = "Please enter something here";
     }
 
-    if (this.state.heading.length > 10) {
+    if (this.state.heading.length > 50) {
       headingError = "You need can only enter 50 characters";
     }
 
+    // Subheading error
+    if (this.state.subheading.length < 1) {
+      subheadingError = "Please enter something here";
+    }
+
+    if (this.state.subheading.length > 250) {
+      subheadingError = "You need can only enter 250 characters";
+    }
+
+    // Author error
+    if (this.state.author.length < 1) {
+      authorError = "Please enter something here";
+    }
+
+    if (this.state.author.length > 40) {
+      authorError = "You need can only enter 40 characters";
+    }
+
+    // Email error
     if (!this.state.email.includes("@")) {
       emailError =
         "Invalid email. Make sure you type in a valid email address (author@mail.com)";
     }
-    if (headingError || emailError) {
-      this.setState({ headingError, emailError });
+
+    // Error handler
+    if (headingError || subheadingError || authorError || emailError) {
+      this.setState({ headingError, subheadingError, authorError, emailError });
       return false;
     }
     return true;
@@ -67,11 +103,9 @@ class PostForm extends React.Component<PostFormProps, PostFormState> {
     const isValid = this.validate();
 
     if (isValid) {
-      console.log(this.state);
       this.setState(initialState);
     }
 
-    console.log(this.state);
     axios
       .post("http://localhost:3001/api/posts", this.state)
       .then(response => {
@@ -96,12 +130,7 @@ class PostForm extends React.Component<PostFormProps, PostFormState> {
             name="heading"
             maxChars={50}
           />
-          {/* <input
-            type="text"
-            name="heading"
-            value={heading}
-            onChange={this.changeHandler}
-          /> */}
+
           <p className={styles.validation}>{this.state.headingError}</p>
           <h4 className={styles.inputHeaders}>Description</h4>
           <CharCountInput
@@ -111,26 +140,15 @@ class PostForm extends React.Component<PostFormProps, PostFormState> {
             name="subheading"
             maxChars={250}
           />
-          {/* <input
-            type="text"
-            name="subheading"
-            value={subheading}
-            onChange={this.changeHandler}
-          /> */}
+          <p className={styles.validation}>{this.state.subheadingError}</p>
+
           <h4 className={styles.inputHeaders}>Text</h4>
-          {/* <CharCountInput
-            onChange={this.changeHandler}
+
+          <textarea
+            className={styles.textArea}
+            onChange={this.textAreachangeHandler}
             value={text}
-            type="text"
             name="text"
-            maxChars={250}
-          /> */}
-          <input
-            className={styles.inputField}
-            type="text"
-            name="text"
-            value={text}
-            onChange={this.changeHandler}
           />
           <h4 className={styles.inputHeaders}>Author</h4>
           <CharCountInput
@@ -138,22 +156,12 @@ class PostForm extends React.Component<PostFormProps, PostFormState> {
             value={author}
             type="text"
             name="author"
-            maxChars={250}
+            maxChars={40}
           />
-          {/* <input
-            type="text"
-            name="author"
-            value={author}
-            onChange={this.changeHandler}
-          /> */}
+
+          <p className={styles.validation}>{this.state.authorError}</p>
           <h4 className={styles.inputHeaders}>Email</h4>
-          {/* <CharCountInput
-            onChange={this.changeHandler}
-            value={email}
-            type="text"
-            name="email"
-            maxChars={250}
-          /> */}
+
           <input
             className={styles.inputField}
             type="text"
@@ -162,7 +170,7 @@ class PostForm extends React.Component<PostFormProps, PostFormState> {
             onChange={this.changeHandler}
           />
           <p className={styles.validation}>{this.state.emailError}</p>
-          {/* <button type="submit">Submit</button> */}
+
           <button
             name="submit"
             type="submit"

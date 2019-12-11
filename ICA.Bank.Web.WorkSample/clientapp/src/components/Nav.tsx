@@ -8,13 +8,13 @@ const Nav: React.FC = () => {
       <div className={styles.innerContainer}>
         <ul className={styles.navLinks}>
           <Link to="/">
-            <li className={styles.firstLi}>Blog</li>
-          </Link>
-          <Link to="/">
-            <li>Home</li>
+            <li className={styles.firstLink}>Blog</li>
           </Link>
           <Link to="/posts">
-            <li>Post</li>
+            <li>Posts</li>
+          </Link>
+          <Link to="/create">
+            <li>Create</li>
           </Link>
         </ul>
       </div>

@@ -3,9 +3,8 @@
   padding: 0;
   width: 100%;
   .innerContainer {
-    max-width: 30em;
+    max-width: 38rem;
     margin: 0 auto;
-    height: 100%;
 
     .navLinks {
       list-style-type: none;
@@ -13,7 +12,7 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-      .firstLi {
+      .firstLink {
         float: left;
         font-size: 30px;
         font-weight: bold;
@@ -33,7 +32,7 @@
         display: inline;
       }
       a:hover {
-        color: #e06c75;
+        color: #0045ff;
       }
     }
   }

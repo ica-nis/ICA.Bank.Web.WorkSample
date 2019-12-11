@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styles from "../styles/postList.module.scss";
+import styles from "../styles/postlist.module.scss";
 
 interface PostListProps {}
 
@@ -24,7 +24,6 @@ const PostList: React.FC<PostListProps> = () => {
       const items = await data.json();
 
       setItems(items);
-      console.log("Right after items been sent to state", items);
     } catch (error) {
       console.error(error);
     }
@@ -35,13 +34,7 @@ const PostList: React.FC<PostListProps> = () => {
       {items.map(item => (
         <div className={styles.container} key={item.id}>
           <Link to={`/posts/${item.id}`}>
-            <div
-              style={
-                {
-                  // border: "1px solid red"
-                }
-              }
-            >
+            <div>
               <h1>{item.heading}</h1>
               <p>{new Date(item.timestamp).toLocaleDateString()}</p>
             </div>

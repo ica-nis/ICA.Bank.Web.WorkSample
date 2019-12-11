@@ -24,7 +24,6 @@ class CharCountInput extends React.Component<
   }
 
   handleCharCount = (value: string) => {
-    console.log(value);
     const { maxChars } = this.props;
     const charCount = value.length;
     const charsLeft = maxChars - charCount;

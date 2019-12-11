@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../styles/singlePost.module.scss";
+import styles from "../styles/post.module.scss";
 
 interface SinglePostProps {
   match: any;
@@ -28,7 +28,6 @@ const Post: React.FC<SinglePostProps> = ({ match }) => {
       );
       const singlePost = await fetchSinglePost.json();
       setSinglePost(singlePost);
-      console.log(singlePost);
     } catch (error) {
       console.error(error);
     }

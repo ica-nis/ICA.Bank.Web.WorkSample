@@ -5,6 +5,7 @@
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  word-wrap: break-word;
   .heading {
     font-size: 70px;
     text-align: center;
@@ -25,9 +26,6 @@
   .categories {
     text-align: center;
     p {
-      font-family: "Karla", sans-serif;
-      font-weight: normal;
-      font-style: italic;
       color: #abb0ba;
       display: inline;
     }
