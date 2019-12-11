@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import styles from "../styles/postList.module.scss";
 
 interface PostListProps {}
 
@@ -32,11 +33,19 @@ const PostList: React.FC<PostListProps> = () => {
   return (
     <>
       {items.map(item => (
-        <div key={item.id}>
-          <h1>
-            <Link to={`/posts/${item.id}`}>{item.heading}</Link>
-          </h1>
-          <p>{new Date(item.timestamp).toLocaleDateString()}</p>
+        <div className={styles.container} key={item.id}>
+          <Link to={`/posts/${item.id}`}>
+            <div
+              style={
+                {
+                  // border: "1px solid red"
+                }
+              }
+            >
+              <h1>{item.heading}</h1>
+              <p>{new Date(item.timestamp).toLocaleDateString()}</p>
+            </div>
+          </Link>
         </div>
       ))}
     </>

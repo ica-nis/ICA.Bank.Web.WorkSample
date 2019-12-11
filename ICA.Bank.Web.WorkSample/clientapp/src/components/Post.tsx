@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import styles from "../styles/singlePost.module.scss";
 
 interface SinglePostProps {
   match: any;
@@ -11,7 +12,6 @@ interface SinglePostState {
   author?: string;
   email?: string;
   text?: string;
-  timestamp?: number | string;
 }
 
 const Post: React.FC<SinglePostProps> = ({ match }) => {
@@ -36,12 +36,19 @@ const Post: React.FC<SinglePostProps> = ({ match }) => {
 
   return (
     <>
-      <h1>{singlePost.heading}</h1>
-      <h4>{singlePost.subheading}</h4>
-      <p>{singlePost.text}</p>
-      <p>{singlePost.author}</p>
-      <p>{singlePost.email}</p>
-      <p>{singlePost.timestamp}</p>
+      <div className={styles.container}>
+        <h1 className={styles.heading}>{singlePost.heading}</h1>
+        <div className={styles.categories}>
+          <p>
+            <span className={styles.bold}>{singlePost.author}</span>
+          </p>
+          <p className={styles.secound}>
+            <span className={styles.bold}>{singlePost.email}</span>
+          </p>
+        </div>
+        <h2 className={styles.subheading}>{singlePost.subheading}</h2>
+        <p className={styles.text}>{singlePost.text}</p>
+      </div>
     </>
   );
 };

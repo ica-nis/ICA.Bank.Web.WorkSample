@@ -9,29 +9,35 @@ app.use(express.json());
 const posts = [
   {
     id: 1,
-    heading: "Post 1 header",
-    subheading: "This is the subheading 1",
-    text: "This is the first textfield. Here we can write our blogpost",
+    heading: "Advanced CSS-Only HTML Form Styling",
+    subheading:
+      "HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.",
+    text:
+      "HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.",
     author: "Erik Wahlström",
     email: "erik@mail.com",
     timestamp: 1575967926045
   },
   {
     id: 2,
-    heading: "Post 2 header",
-    subheading: "This is the subheading 2",
+    heading: "Advanced CSS-Only HTML Form Styling",
+    subheading:
+      "HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.",
+    text:
+      "HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.",
     author: "Erik Wahlström",
     email: "erik@mail.com",
-    text: "This is the secound textfield. Here we can write our blogpost",
     timestamp: 1575967926045
   },
   {
     id: 3,
-    heading: "Post 3 header",
-    subheading: "This is the subheading 3",
+    heading: "Advanced CSS-Only HTML Form Styling",
+    subheading:
+      "HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.",
+    text:
+      "HTML form inputs have always been notoriously difficult to style with CSS, but there are several little-used selectors that give us significant power to style inputs and surrounding elements. Some of these are relatively new, while others have been available for quite some time.",
     author: "Erik Wahlström",
     email: "erik@mail.com",
-    text: "This is the third textfield. Here we can write our blogpost",
     timestamp: 1575967926045
   }
 ];

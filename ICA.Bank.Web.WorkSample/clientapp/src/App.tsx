@@ -9,9 +9,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <Nav />
-      <PostForm />
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={PostForm} />
         <Route path="/posts" exact component={PostList} />
         <Route path="/posts/:id" component={Post} />
       </Switch>
